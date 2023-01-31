@@ -42,7 +42,7 @@ AuthRouter.post("/login", async (req, res) => {
       bcrypt.compare(password, user[0].password, (err, result) => {
         if (result) {
           var token = jwt.sign({ course: "backend" }, "masai");
-          res.send({ msg: "login success", token: token });
+          res.send({ msg: "login success", token: token, email: email });
         } else {
           res.send({ msg: "wrong credential" });
         }
